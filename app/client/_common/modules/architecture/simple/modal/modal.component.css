@@ -1,0 +1,11 @@
+
+.custom-modal-body-container
+{
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.custom-padding-title
+{
+  padding-bottom: 10px;
+}

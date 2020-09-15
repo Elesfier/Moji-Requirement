@@ -1,0 +1,224 @@
+
+<div loader>
+  <div
+    style="margin-top:50px"
+    class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+    <h1 style="color: #337ab7;" align="center">Moji</h1>
+    <h2 style="color: #337ab7;" align="center">Requirements Management</h2>
+    <br><br>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+
+        <div
+          class="panel-title">
+          Sign Up
+        </div>
+
+        <div
+          style="float:right; font-size: 85%; position: relative; top:-10px">
+            <a id="signinlink" [routerLink]="['/login']" >
+              Sign In
+            </a>
+        </div>
+
+      </div>
+      <div class="panel-body">
+
+          <form
+            class="form-horizontal"
+            name="form"
+            (ngSubmit)="f.form.valid && register()"
+            #f="ngForm"
+            novalidate
+            role="form">
+
+              <div
+                class="form-group has-feedback"
+                [ngClass]="{
+                  'has-success': f.submitted && username.valid,
+                  'has-error': f.submitted && !username.valid
+                }">
+                <label for="username" class="col-md-3 control-label">
+                  Username
+                </label>
+                <div class="col-md-9">
+                    <input
+                      [(ngModel)]="model.username"
+                      #username="ngModel"
+                      required
+                      type="text"
+                      class="form-control"
+                      name="username"
+                      placeholder="Username">
+                    <span
+                      *ngIf="f.submitted && !username.valid"
+                      class="glyphicon glyphicon-remove form-control-feedback">
+                    </span>
+                    <span
+                      *ngIf="f.submitted && username.valid"
+                      class="glyphicon glyphicon-ok form-control-feedback">
+                    </span>
+                </div>
+              </div>
+
+              <div
+                class="form-group has-feedback"
+                [ngClass]="{
+                  'has-success': f.submitted && email.valid,
+                  'has-error': f.submitted && !email.valid
+                }">
+                <label for="firstName" class="col-md-3 control-label">
+                  Email
+                </label>
+                <div class="col-md-9">
+                    <input
+                      [(ngModel)]="model.email"
+                      #email="ngModel"
+                      required
+                      type="text"
+                      class="form-control"
+                      name="email"
+                      placeholder="Email address">
+                    <span
+                      *ngIf="f.submitted && !email.valid"
+                      class="glyphicon glyphicon-remove form-control-feedback">
+                    </span>
+                    <span
+                      *ngIf="f.submitted && email.valid"
+                      class="glyphicon glyphicon-ok form-control-feedback">
+                    </span>
+                </div>
+              </div>
+
+              <div
+                class="form-group has-feedback"
+                [ngClass]="{
+                  'has-success': f.submitted && firstname.valid,
+                  'has-error': f.submitted && !firstname.valid
+                }">
+                <label for="firstname" class="col-md-3 control-label">
+                  First Name
+                </label>
+                <div class="col-md-9">
+                    <input
+                      [(ngModel)]="model.firstname"
+                      #firstname="ngModel"
+                      required
+                      type="text"
+                      class="form-control"
+                      name="firstname"
+                      placeholder="First Name">
+                    <span
+                      *ngIf="f.submitted && !firstname.valid"
+                      class="glyphicon glyphicon-remove form-control-feedback">
+                    </span>
+                    <span
+                      *ngIf="f.submitted && firstname.valid"
+                      class="glyphicon glyphicon-ok form-control-feedback">
+                    </span>
+                </div>
+              </div>
+
+              <div
+                class="form-group has-feedback"
+                [ngClass]="{
+                  'has-success': f.submitted && lastname.valid,
+                  'has-error': f.submitted && !lastname.valid
+                }">
+                <label for="lastname" class="col-md-3 control-label">
+                  Last Name
+                </label>
+                <div class="col-md-9">
+                    <input
+                      [(ngModel)]="model.lastname"
+                      #lastname="ngModel"
+                      required
+                      type="text"
+                      class="form-control"
+                      name="lastname"
+                      placeholder="Last Name">
+                    <span
+                      *ngIf="f.submitted && !lastname.valid"
+                      class="glyphicon glyphicon-remove form-control-feedback">
+                    </span>
+                    <span
+                      *ngIf="f.submitted && lastname.valid"
+                      class="glyphicon glyphicon-ok form-control-feedback">
+                    </span>
+                </div>
+              </div>
+
+              <div
+                class="form-group has-feedback"
+                [ngClass]="{
+                  'has-success': f.submitted && password.valid,
+                  'has-error': f.submitted && !password.valid
+                }">
+                <label for="lastName" class="col-md-3 control-label">
+                  Password
+                </label>
+                <div class="col-md-9">
+                    <input
+                      [(ngModel)]="model.password"
+                      #password="ngModel"
+                      required
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      placeholder="Password">
+                    <span
+                      *ngIf="f.submitted && !password.valid"
+                      class="glyphicon glyphicon-remove form-control-feedback">
+                    </span>
+                    <span
+                      *ngIf="f.submitted && password.valid"
+                      class="glyphicon glyphicon-ok form-control-feedback">
+                    </span>
+                </div>
+              </div>
+
+              <div
+                class="form-group has-feedback"
+                [ngClass]="{
+                  'has-success': f.submitted && repeatPassword.valid && repeatPassword.value == password.value,
+                  'has-error': f.submitted && (!repeatPassword.valid || !(repeatPassword.value == password.value))
+                }">
+                <label for="repeatPassword" class="col-md-3 control-label">
+                  Repeat Pass
+                </label>
+                <div class="col-md-9">
+                    <input
+                      [(ngModel)]="model.repeatPassword"
+                      #repeatPassword="ngModel"
+                      required
+                      type="password"
+                      class="form-control"
+                      name="repeatPassword"
+                      placeholder="Repeat Password">
+                    <span
+                      *ngIf="f.submitted && (!repeatPassword.valid || !(repeatPassword.value == password.value))"
+                      class="glyphicon glyphicon-remove form-control-feedback">
+                    </span>
+                    <span
+                      *ngIf="f.submitted && repeatPassword.valid && repeatPassword.value == password.value"
+                      class="glyphicon glyphicon-ok form-control-feedback">
+                    </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                  <button class="btn btn-success">
+                    <i class="icon-hand-right"></i>
+                    Sign Up
+                  </button>
+                </div>
+              </div>
+
+          </form>
+       </div>
+    </div>
+  </div>
+</div>

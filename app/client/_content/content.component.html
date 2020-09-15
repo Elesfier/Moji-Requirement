@@ -1,0 +1,19 @@
+
+<simple-navigation
+  #mainContentNavigation
+  [brand]="brand"
+  [base-link]="baseLink"
+  [routes]="routes"
+  [link-last-button]="'/login'"
+  [label-last-button]="'Logout'"
+  (on-click-last-button)="removeToken($event)">
+</simple-navigation>
+
+<simple-loader
+  [isLoading]="true"
+  #contentLoader>
+  <router-outlet
+    (activate)='onActivate($event)'
+    (deactivate)='onDeactivate($event)'>
+  </router-outlet>
+</simple-loader>

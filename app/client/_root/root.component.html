@@ -1,0 +1,36 @@
+
+<static-simple-light-loader *ngIf="loading" ></static-simple-light-loader>
+<div>
+  <div class="container-fluid">
+    <div class="row" style="min-height: 780px; max-height: 780px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div [ngClass]="{ 'loading' : loading }">
+          <router-outlet
+            (activate)='onActivate($event)'>
+          </router-outlet>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <footer>
+      <div class="">
+        <div class="well well-sm clearfix" style="padding-bottom: 9px;">
+          <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" style="padding-left: 9px; padding-right: 9px;">
+            <span class="pull-left">
+              {{platformName}} © {{copyrightYear}} {{author}}
+            </span>
+          </div>
+          <div class="col-xs-0 col-sm-2 col-md-2 col-lg-2 text-center"></div>
+          <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" style="padding-left: 9px; padding-right: 9px;">
+            <style> @media screen and (max-width: 768px) { .dont-pull-right { float: left !important; } } </style>
+            <span class="pull-right dont-pull-right">
+              <span>Contact: </span>
+              <a [attr.href]="'mailto:'+authorEmail" itemprop="email">Email</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <br>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+
+<div class="row">
+  <content-loader #ProjectLoader>
+    <div class="col-sm-4">
+      <div class='well well-sm clearfix well-moji-size'>
+        <div class="row">
+          <div class="col-sm-12" align="center">
+            <div class='well well-sm clearfix'>
+              <h4>Project View</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <combo-box #ProjectSelect></combo-box>
+            <br>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class='well well-sm clearfix'>
+                  <div class="row">
+                    <div class="col-sm-6" align="center">
+                      <div class="btn btn-primary" style="pointer-events: none; width: 90%; margin: 10px;">
+                        Requirements <span class="badge badge-light">{{projectInfoData.requirements}}</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-6" align="center">
+                      <div class="btn btn-primary" style="pointer-events: none; width: 90%; margin: 10px;">
+                        Open <span class="badge badge-light" style="margin-right: 4px;">{{projectInfoData.open}}</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-6" align="center">
+                      <div class="btn btn-primary" style="pointer-events: none; width: 90%; margin: 10px;">
+                        Close <span class="badge badge-light" style="margin-right: 4px;">{{projectInfoData.close}}</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-6" align="center">
+                      <div class="btn btn-primary" style="pointer-events: none; width: 90%; margin: 10px;">
+                        Review <span class="badge badge-light" style="margin-right: 4px;">{{projectInfoData.review}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class='well well-sm clearfix'>
+                  <div class="col-sm-12">
+                    <button type="button" class="btn btn-info" style="width: 100%;" [attr.disabled]="!currentSelectedIdProject ? '' : null" (click)="generateProjectReport()">Generate Report</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class='well well-sm clearfix'>
+                  <text-editor #ProjectDescription [height]="'188px'"></text-editor>
+                  <br>
+                  <button type="button" class="btn btn-success" style="width: 100%;" [attr.disabled]="!currentSelectedIdProject ? '' : null" (click)="saveProjectDescription()">Save Description</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class='well well-sm clearfix well-moji-size'>
+        <div class="row">
+          <div class="col-sm-12" align="center">
+            <div class='well well-sm clearfix'>
+              <h4>Module list of Project</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="form-group">
+              <input #NewModuleInput class="form-control" placeholder="New Module"/>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-success" [attr.disabled]="!currentSelectedIdProject ? '' : null" (click)="addModule()">Add</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <content-loader #ModuleTableLoader>
+              <data-table #ModuleTable [table-class]="'table-striped'"></data-table>
+            </content-loader>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class='well well-sm clearfix well-moji-size'>
+        <content-loader #ModuleInfoLoader>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class='well well-sm clearfix'>
+                <div class="row">
+                  <div class="col-sm-12" align="center">
+                    <h4>{{moduleInfoData.title}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="moduleInfoData.title != 'Module not Selected'" class="row">
+            <div class="col-sm-12">
+              <div class='well well-sm clearfix'>
+                <div class="row">
+                  <div class="col-sm-6" align="center">
+                    <div class="btn btn-primary" style="pointer-events: none; width: 90%; margin: 10px;">
+                      Requirements <span class="badge badge-light">{{moduleInfoData.requirements}}</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6" align="center">
+                    <div class="btn btn-primary" style="pointer-events: none; width: 90%; margin: 10px;">
+                      Open <span class="badge badge-light" style="margin-right: 4px;">{{moduleInfoData.open}}</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6" align="center">
+                    <div class="btn btn-primary" style="pointer-events: none; width: 90%; margin: 10px;">
+                      Close <span class="badge badge-light" style="margin-right: 4px;">{{moduleInfoData.close}}</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6" align="center">
+                    <div class="btn btn-primary" style="pointer-events: none; width: 90%; margin: 10px;">
+                      Review <span class="badge badge-light" style="margin-right: 4px;">{{moduleInfoData.review}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="moduleInfoData.title != 'Module not Selected'" class="row">
+            <div class="col-sm-12">
+              <div class='well well-sm clearfix'>
+                <div class="col-sm-12">
+                  <button type="button" class="btn btn-info" style="width: 100%;" (click)="generateModuleReport()">Generate Report</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </content-loader>
+      </div>
+    </div>
+  </content-loader>
+</div>

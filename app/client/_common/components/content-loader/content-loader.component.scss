@@ -1,0 +1,24 @@
+
+.loading *:not(.content-loader) {
+    opacity: 0.92;
+    filter: alpha(opacity=92);
+    pointer-events: none;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1;
+}
+
+@keyframes light-spinner {
+    to { transform: rotate(360deg); }
+}
+
+.content-loader:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    border-top-color: #006BC6;
+    animation: light-spinner .6s linear infinite;
+}

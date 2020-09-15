@@ -1,0 +1,31 @@
+
+<div class="modal-dialog" [ngClass]="{ 'modal-sm' : size == 'small', 'modal-lg' : size == 'large' }">
+  <div class="modal-content">
+    <simple-loader
+      #modalLoader
+      [margin-right]="120">
+      <div *ngIf="showHeader" class="modal-header">
+        <button *ngIf="addCloseIcon" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 *ngIf="title" class="modal-title custom-padding-title">{{title}}</h4>
+        <ul *ngIf="$tabs.length != 0" class='nav nav-tabs'>
+            <li *ngFor="let $tab of $tabs; let index = index;" [class.active]="index == 0" (click)="$tab.select($event.currentTarget)" >
+              <a>{{$tab.name}}</a>
+            </li>
+        </ul>
+        <ng-content select="simple-modal-header"></ng-content>
+      </div>
+      <div class="modal-body">
+        <div class="custom-modal-body-container" [ngStyle]="{ 'min-height.px': minHeight, 'max-height.px': maxHeight }">
+          <ng-content select="simple-modal-body"></ng-content>
+          <ng-content></ng-content>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <ng-content select="simple-modal-footer"></ng-content>
+        <button *ngIf="addCloseButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </simple-loader>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+
+<div class="modal fade" id="permissions-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document" style="width: 96% !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Permission for <b>{{currentPermissionUser}}</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3">
+            <combo-box #ProjectSelect></combo-box>
+          </div>
+          <div class="col-sm-3">
+            <combo-box #PermissionSelect></combo-box>
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-success" (click)="addPermission()">Add</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <content-loader #PermissionTableLoader>
+              <data-table #PermissionTable [table-class]="'table-striped'"></data-table>
+            </content-loader>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class='well well-sm clearfix well-moji-size'>
+      <div class="row">
+        <div class="col-sm-12" align="center">
+          <div class='well well-sm clearfix'>
+            <h4>System Project View</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="form-group">
+            <input #NewProjectInput class="form-control" placeholder="New Project"/>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-success" (click)="addProject()">Add</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <content-loader #ProjectTableLoader>
+            <data-table #ProjectTable [table-class]="'table-striped'"></data-table>
+          </content-loader>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class='well well-sm clearfix well-moji-size'>
+      <div class="row">
+        <div class="col-sm-12" align="center">
+          <div class='well well-sm clearfix'>
+            <h4>System User View</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <content-loader #MemberTableLoader>
+            <data-table #MemberTable [table-class]="'table-striped'"></data-table>
+          </content-loader>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

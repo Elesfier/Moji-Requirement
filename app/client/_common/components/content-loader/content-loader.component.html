@@ -1,0 +1,10 @@
+
+
+<div [ngClass]="{ 'loading' : loading }">
+    <ng-content></ng-content>
+    <div
+        class="content-loader"
+        [ngClass]="{ 'show' : loading, 'hide' : !loading }">
+    </div>
+</div>
+

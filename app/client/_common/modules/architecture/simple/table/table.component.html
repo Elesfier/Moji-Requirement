@@ -1,0 +1,66 @@
+
+<div
+  class="custom-simple-table"
+  [style.min-height.px]="minHeight"
+  [style.max-height.px]="maxHeight">
+  <simple-loader
+    [isLoading]="true"
+    #tableLoader>
+    <table *ngIf="model && !$loader.isLoading" class="table table-bordered table-hover table-sm">
+      <thead *ngIf="model.header && showHeader">
+        <tr class="bg-primary custom-simple-table-header">
+          <th
+            *ngFor="let columnHeader of model.header;"
+            [innerHTML]="columnHeader.content"
+            [attr.class]="'col-xs-'+columnHeader.size[0] + ' col-sm-'+columnHeader.size[1] + ' col-md-'+columnHeader.size[2] + ' col-lg-'+columnHeader.size[3] + ' col-xl-'+columnHeader.size[4] + ' ' + columnHeader.classes">
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngIf="model.rows">
+        <tr *ngFor="let row of model.rows;" class="bg-info">
+          <td
+            *ngFor="let column of addExtraColumns(row.columns); let index = index;"
+            [attr.class]="'custom-simple-row col-xs-'+model.header[index].size[0] + ' col-sm-'+model.header[index].size[1] + ' col-md-'+model.header[index].size[2] + ' col-lg-'+model.header[index].size[3] + ' col-xl-'+model.header[index].size[4] + ' ' + column.classes"
+            [ngSwitch]="column.type?column.type:''">
+
+            <button *ngSwitchCase="'button'"
+              type="button"
+              class="btn btn-default btn-sm custom-simple-table-button"
+              [innerHTML]="column.content"
+              (click)="events[column.event](row.data)">
+            </button>
+
+            <button *ngSwitchCase="'remove-button'"
+              type="button"
+              class="btn btn-default btn-sm jome-button glyphicon glyphicon-remove"
+              (click)="events[column.event](row.data)">
+            </button>
+
+            <div *ngSwitchCase="'center'"
+              class="text-center">
+              <b [innerHTML]="column.content"></b>
+            </div>
+
+            <div *ngSwitchCase="'link'" class="text-center">
+              <a
+                target="_blank"
+                [ngStyle]="{ 'pointer-events' : (column.content)?undefined:'none', 'color': (column.content)?undefined:'lightgray', 'cursor': (column.content)?undefined:'default' }"
+                [attr.href]="column.content">link</a>
+            </div>
+
+            <div *ngSwitchCase="'checkbox'"
+              class="text-center">
+              <input class="custom-simple-table-checkbox" [(ngModel)]="column.content" type="checkbox"/>
+            </div>
+
+            <span *ngSwitchDefault
+              style="max-width: 200px; vertical-align: middle; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+              [innerHTML]="column.content">
+            </span>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </simple-loader>
+</div>

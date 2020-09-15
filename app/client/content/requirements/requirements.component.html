@@ -1,0 +1,94 @@
+
+<div class="modal fade" id="diagramModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document" style="width: 96% !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 760px;">
+        <iframe style="width: 100%; height: 100%;" src="https://app.diagrams.net/"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <content-loader #RequirementTreeLoader>
+      <div class='well well-sm clearfix well-moji-size'>
+        <div class="row">
+          <div class="col-sm-12" align="center">
+            <div class='well well-sm clearfix'>
+              <h4>Requirement Tree</h4>
+            </div>
+          </div>
+        </div>
+        <combo-box #ProjectSelect></combo-box>
+        <br>
+        <combo-box #ModuleSelect></combo-box>
+        <content-loader #RequirementsTreeViewLoader style="height: 450px; display: block;">
+          <tree-view #RequirementsTreeView></tree-view>
+        </content-loader>
+        <div class="row align-bottom">
+          <div class="col-sm-9">
+            <div class="form-group">
+              <input #NewRequirementInput class="form-control" placeholder="New Requirement"/>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-success" style="width: 100%;" [attr.disabled]="!currentSelectedIdModule ? '' : null" (click)="addRequirement()">Add</button>
+          </div>
+        </div>
+      </div>
+    </content-loader>
+  </div>
+  <div class="col-sm-8">
+    <content-loader #RequirementLoader>
+      <div class='well well-sm clearfix well-moji-size'>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class='well well-sm clearfix' align="center">
+              <h4>{{currentSelectedRequirement.name}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class='well well-sm clearfix'>
+              <div class="col-sm-3">
+                <div class="btn-group">
+                    <button id="requirement-status-open" type="button" class="btn btn-info" value="Open" [attr.disabled]="currentSelectedRequirement.hasChildren ? '' : null">Open</button>
+                    <button id="requirement-status-review" type="button" class="btn btn-info" value="Review" [attr.disabled]="currentSelectedRequirement.hasChildren ? '' : null">Review</button>
+                    <button id="requirement-status-close" type="button" class="btn btn-info" value="Close" [attr.disabled]="currentSelectedRequirement.hasChildren ? '' : null">Close</button>
+                </div>
+              </div>
+              <div class="col-sm-2"></div>
+              <div class="col-sm-2">
+                <button type="button" class="btn btn-success" (click)="showDiagram()" [attr.disabled]="!currentSelectedRequirement.id ? '' : null" style="width: 100%;">Diagram</button>
+              </div>
+              <div class="col-sm-2"></div>
+              <div class="col-sm-3">
+                <button type="button" class="btn btn-danger" (click)="deleteNode()" [attr.disabled]="!currentSelectedRequirement.id ? '' : null" style="width: 100%;">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class='well well-sm clearfix'>
+              <text-editor #RequirementsDescription [height]="'392px'"></text-editor>
+              <br>
+              <button type="button" class="btn btn-success" style="width: 100%;" [attr.disabled]="!currentSelectedRequirement.id ? '' : null" (click)="saveRequirementDescription()">Save Description</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </content-loader>
+  </div>
+</div>

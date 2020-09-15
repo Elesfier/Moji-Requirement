@@ -1,0 +1,45 @@
+{
+  "name": "Moji",
+  "description": "Moji is a web-based requirement management application",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Arthur Szajdecki",
+    "email": "artur.szajdecki@gmail.com"
+  },
+  "scripts": {
+    "clean": "gulp clean",
+    "build": "gulp compile",
+    "build-all": "gulp compile && cd ./app/client && npm run build && cd ../../",
+    "start": "node dist/app.js",
+    "postinstall": "cd ./app/client && npm install"
+  },
+  "dependencies": {
+    "adm-zip": "^0.4.11",
+    "body-parser": "^1.18.3",
+    "del": "2.2.0",
+    "express": "^4.16.4",
+    "gulp": "4.0.2",
+    "gulp-sourcemaps": "2.6.5",
+    "gulp-typescript": "3.2.1",
+    "jsonwebtoken": "7.4.1",
+    "mongoose": "4.8.3",
+    "morgan": "^1.9.1",
+    "run-sequence": "1.1.5",
+    "wkhtmltopdf": "0.3.4"
+  },
+  "devDependencies": {
+    "typescript": "3.7.4",
+    "@types/node": "13.1.0",
+    "@types/express": "4.0.36",
+    "@types/mongodb": "3.3.14",
+    "@types/mongoose": "5.5.35",
+    "@types/morgan": "1.7.32",
+    "@types/body-parser": "0.0.34",
+    "@types/jsonwebtoken": "7.2.1",
+    "@types/multer": "0.0.33",
+    "@types/bluebird": "3.5.3",
+    "@types/adm-zip": "0.4.31",
+    "@types/chrome": "0.0.47"
+  }
+}

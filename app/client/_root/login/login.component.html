@@ -1,0 +1,115 @@
+
+<div loader>
+
+  <div
+    style="margin-top:50px;"
+    class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+    <h1 style="color: #337ab7;" align="center">Moji</h1>
+    <h2 style="color: #337ab7;" align="center">Requirements Management</h2>
+    <br><br>
+
+    <div class="panel panel-info" >
+
+      <div class="panel-heading">
+          <div class="panel-title">Sign In</div>
+          <!--<div
+            style="float:right; font-size: 80%; position: relative; top:-10px">
+            <a [routerLink]="['/forget-password']">
+              Forgot password?
+            </a>
+          </div>-->
+      </div>
+
+      <div style="padding-top:30px" class="panel-body">
+
+        <form
+          class="form-horizontal"
+          (ngSubmit)="f.form.valid && login()"
+          #f="ngForm"
+          name="form"
+          novalidate
+          role="form">
+
+          <div
+            [ngClass]="{ 'has-error': f.submitted && !username.valid }"
+            style="margin-bottom: 15px"
+            class="input-group">
+              <span
+                class="input-group-addon">
+                <i class="glyphicon glyphicon-user"></i>
+              </span>
+              <input
+                name="username"
+                #username="ngModel"
+                [(ngModel)]="model.username"
+                required
+                type="text"
+                class="form-control"
+                placeholder="Username or Email...">
+          </div>
+          <div
+            *ngIf="f.submitted && !username.valid"
+            class="has-error help-block">
+            Username or Email are required
+          </div>
+
+          <div
+            [ngClass]="{ 'has-error': f.submitted && !password.valid }"
+            style="margin-bottom: 15px"
+            class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-lock"></i>
+              </span>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="model.password"
+                #password="ngModel"
+                required
+                placeholder="Password...">
+          </div>
+          <div
+            *ngIf="f.submitted && !password.valid"
+            class="has-error help-block">
+            Password is required
+          </div>
+
+          <!--<div class="input-group">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="remember"
+                  value="1">
+                Remember me
+              </label>
+            </div>
+          </div>-->
+
+          <div style="margin-top:10px" class="form-group">
+              <div class="col-sm-12 controls">
+                <button class="btn btn-success">Login</button>
+                <!--<button
+                  [routerLink]="['/site']"
+                  class="fa fa-circle-o-notch fa-spin btn btn-primary">
+                  Home
+                </button>-->
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="col-md-12 control">
+                  <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                      Don't have an account?
+                  <a [routerLink]="['/register']">Sign Up Here</a>
+                  </div>
+              </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

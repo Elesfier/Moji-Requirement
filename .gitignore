@@ -1,0 +1,6 @@
+
+dist
+Moji.config.js
+*.log
+node_modules/
+app/client/node_modules/
